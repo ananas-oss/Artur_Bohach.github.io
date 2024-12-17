@@ -142,6 +142,32 @@
     });
   });
 
+
+// theme-toggle.js
+
+// Функция для установки темы
+function setTheme(theme) {
+  if (theme === 'dark') {
+    document.body.classList.add('dark-mode');
+    document.getElementById('theme-toggle').textContent = '☀️'; // Иконка для светлой темы
+  } else {
+    document.body.classList.remove('dark-mode');
+    document.getElementById('theme-toggle').textContent = '🌙'; // Иконка для тёмной темы
+  }
+}
+
+// Получение сохранённой темы из localStorage
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);
+
+// Обработчик нажатия на кнопку переключения темы
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  setTheme(newTheme);
+  localStorage.setItem('theme', newTheme);
+});
+
   /**
    * Init swiper sliders
    */
