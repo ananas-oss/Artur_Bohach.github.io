@@ -5,6 +5,28 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Contact - Personal Bootstrap Template</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+    input {
+        margin-bottom: 10px;
+        padding: 5px;
+        width: 100%;
+    }
+    #results {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    .average {
+        font-size: 1.2em;
+    }
+</style>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -104,96 +126,121 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <h1>Contact Form</h1>
+    <form id="contactForm">
+        <!-- Basic Fields -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" required>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
 
-        <div class="row gy-4">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" required>
 
-          <div class="col-md-6">
-            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
-              <i class="icon bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Address</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
+        <label for="address">Address:</label>
+        <input type="text" id="address" required>
 
-          <div class="col-md-6">
-            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
-              <i class="icon bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Call Me</h3>
-                <p>+1 5589 55488 55</p>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
+        <!-- Numeric Attributes -->
+        <label for="num1">Attribute 1:</label>
+        <input type="number" id="num1" required>
+        
+        <label for="num2">Attribute 2:</label>
+        <input type="number" id="num2" required>
 
-          <div class="col-md-6">
-            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
-              <i class="icon bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Email Us</h3>
-                <p>info@example.com</p>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
+        <label for="num3">Attribute 3:</label>
+        <input type="number" id="num3" required>
 
-          <div class="col-md-6">
-            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
-              <i class="icon bi bi-share flex-shrink-0"></i>
-              <div>
-                <h3>Social Profiles</h3>
-                <div class="social-links">
-                  <a href="#"><i class="bi bi-twitter-x"></i></a>
-                  <a href="#"><i class="bi bi-facebook"></i></a>
-                  <a href="#"><i class="bi bi-instagram"></i></a>
-                  <a href="#"><i class="bi bi-skype"></i></a>
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
+        <label for="num4">Attribute 4:</label>
+        <input type="number" id="num4" required>
+
+        <label for="num5">Attribute 5:</label>
+        <input type="number" id="num5" required>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <!-- Display Results -->
+    <div id="results"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to handle form submission
+        function submitForm() {
+            // Collect values from form
+            const name = document.getElementById('name').value;
+            const surname = document.getElementById('surname').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+
+            // Numeric attributes
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const num3 = parseFloat(document.getElementById('num3').value);
+            const num4 = parseFloat(document.getElementById('num4').value);
+            const num5 = parseFloat(document.getElementById('num5').value);
+
+            // Validate email, phone, and address
+            if (!validateEmail(email) || !validatePhone(phone) || address.trim() === '') {
+                alert("Invalid input! Please check email, phone, and address fields.");
+                return;
+            }
+
+            // Create object to store data
+            const userData = {
+                name,
+                surname,
+                email,
+                phone,
+                address,
+                attributes: [num1, num2, num3, num4, num5]
+            };
+
+            // Log the object to console
+            console.log("User Data Object:", userData);
+
+            // Calculate average of numeric attributes
+            const average = (num1 + num2 + num3 + num4 + num5) / 5;
+
+            // Display results
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                Name: ${name} <br>
+                Surname: ${surname} <br>
+                Email: ${email} <br>
+                Phone: ${phone} <br>
+                Address: ${address} <br>
+                Attribute 1: ${num1} <br>
+                Attribute 2: ${num2} <br>
+                Attribute 3: ${num3} <br>
+                Attribute 4: ${num4} <br>
+                Attribute 5: ${num5} <br>
+                <div class="average" style="color: ${getColorForAverage(average)};">
+                    ${name} ${surname} (${email}): ${average.toFixed(2)}
                 </div>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
+            `;
+        }
 
-        </div>
+        // Validation Functions
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
 
-        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
-          <div class="row gy-4">
+        function validatePhone(phone) {
+            return /^\d{12}$/.test(phone);
+        }
 
-            <div class="col-md-6">
-              <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-            </div>
-
-            <div class="col-md-6 ">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-            </div>
-
-            <div class="col-md-12">
-              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-            </div>
-
-            <div class="col-md-12">
-              <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-            </div>
-
-            <div class="col-md-12 text-center">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-
-              <button type="submit">Send Message</button>
-            </div>
-
-          </div>
-        </form><!-- End Contact Form -->
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
-  </main>
+        // Function to color the average result
+        function getColorForAverage(avg) {
+            if (avg < 50) return 'red';
+            if (avg < 80) return 'orange';
+            return 'green';
+        }
+    </script>
 
   <footer id="footer" class="footer">
     <div class="container">

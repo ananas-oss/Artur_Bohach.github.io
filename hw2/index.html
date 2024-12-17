@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button id="themeToggle">Toggle Theme</button>
+
+    <div class="container">
+        <h1>Snake Game</h1>
+        <div id="game-board"></div>
+        <div class="score-panel">
+            <p>Score: <span id="score">0</span></p>
+            <button id="restartBtn" onclick="resetGame()">Restart</button>
+        </div>
+
+            <div class="leaderboard">
+                <h2>Leaderboard 🏆</h2>
+                <table id="leaderboard-table">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    <audio id="foodSound" src="food.mp3" preload="auto"></audio>
+    <audio id="gameOverSound" src="gameover.mp3" preload="auto"></audio>
+
+</body>
+</html>
