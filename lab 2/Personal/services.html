@@ -93,6 +93,19 @@
           </div>
         </div>
       </div>
+      <div id="clock" style="font-size: 2em; font-family: Arial;"></div> 
+      <script>
+          function displayClock() {
+              const now = new Date();
+              const hours = now.getHours().toString().padStart(2, '0');
+              const minutes = now.getMinutes().toString().padStart(2, '0');
+              const seconds = now.getSeconds().toString().padStart(2, '0');
+              document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+          }
+      
+          setInterval(displayClock, 1000);
+          displayClock();
+      </script>
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
@@ -102,7 +115,18 @@
         </div>
       </nav>
     </div><!-- End Page Title -->
-
+    <div class="svg-divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28.61C213.63,75.92,268.4,52,322,52c49.73,0,100.28,21.56,148,42.58C495.27,93.63,544.73,75.63,600,75.63c55.27,0,104.73,18,150,42.58c47.72,21.02,98.27,42.58,148,42.58c53.6,0,108.37-23.92,158-28.61C1096.41,80.46,1152.21,90.43,1200,112.71V0Z" 
+              opacity=".25" 
+              class="shape-fill"></path>
+        <path d="M0,0V15.81C47.79,36.92,103.59,46,158,42.58C213.63,39.16,268.4,11.63,322,11.63c49.73,0,100.28,21.56,148,42.58C495.27,75.92,544.73,93.92,600,93.92c55.27,0,104.73-18,150-42.58c47.72-21.02,98.27-42.58,148-42.58c53.6,0,108.37,23.92,158,28.61C1096.41,59.63,1152.21,69.6,1200,90.71V0Z" 
+              opacity=".5" 
+              class="shape-fill"></path>
+        <path d="M0,0V5.63C47.79,26.73,103.59,36.71,158,33.29C213.63,29.86,268.4,2.33,322,2.33c49.73,0,100.28,21.56,148,42.58C495.27,86.92,544.73,104.92,600,104.92c55.27,0,104.73-18,150-42.58c47.72-21.02,98.27-42.58,148-42.58c53.6,0,108.37,23.92,158,28.61C1096.41,40.73,1152.21,50.7,1200,71.81V0Z" 
+              class="shape-fill"></path>
+      </svg>
+    </div>
 <!-- Services Section -->
 <section id="services" class="services section">
 
@@ -146,7 +170,47 @@
       </div><!-- End Audio Service Item -->
 
     </div>
-
+    <h1>Cauchy Integral Formula</h1>
+    <p>The formula for the value of a function f(a) in complex analysis is as follows:</p>
+    <!-- MathML Code -->
+    <math display="block">
+      <!-- f(a) -->
+      <mrow>
+          <mi>f</mi>
+          <mo>(</mo>
+          <mi>a</mi>
+          <mo>)</mo>
+          <mo>=</mo>
+          <!-- Fraction -->
+          <mfrac>
+              <mn>1</mn>
+              <mrow>
+                  <mn>2</mn>
+                  <mi>&#x03C0;</mi> <!-- pi -->
+                  <mi>i</mi>
+              </mrow>
+          </mfrac>
+          <!-- Integral -->
+          <mo>&#x222E;</mo> <!-- Contour integral -->
+          <mrow>
+              <mfrac>
+                  <mrow>
+                      <mi>f</mi>
+                      <mo>(</mo>
+                      <mi>z</mi>
+                      <mo>)</mo>
+                  </mrow>
+                  <mrow>
+                      <mi>z</mi>
+                      <mo>-</mo>
+                      <mi>a</mi>
+                  </mrow>
+              </mfrac>
+              <mi>d</mi>
+              <mi>z</mi>
+          </mrow>
+      </mrow>
+  </math>
   </div>
 
 </section><!-- /Services Section -->

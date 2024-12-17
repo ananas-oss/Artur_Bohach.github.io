@@ -170,6 +170,27 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# SVG Divider (Волнистый разделитель)
+--------------------------------------------------------------*/
+.svg-divider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.svg-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 150px;
+}
+
+.svg-divider .shape-fill {
+  fill: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
 .header {
@@ -214,7 +235,7 @@ h6 {
   }
 
   .navmenu > ul > li {
-    padding: 15px 14px;
+    margin-right: 20px; /* Изменено с padding на margin для равномерного отступа */
     position: relative;
   }
 
@@ -442,12 +463,6 @@ h6 {
   font-size: 13px;
   padding-top: 5px;
   color: var(--default-color);
-}
-
-/* Наследование цвета для иконок */
-.footer .social-links a i {
-  color: inherit; /* Наследует цвет из родительского элемента */
-  transition: color 0.3s;
 }
 
 /*--------------------------------------------------------------
